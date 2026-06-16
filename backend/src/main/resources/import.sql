@@ -20,3 +20,7 @@ INSERT INTO tb_offer (edition, start_Moment, end_Moment, course_id) VALUES (1.0,
 INSERT INTO tb_offer (edition, start_Moment, end_Moment, course_id) VALUES (2.0,  TIMESTAMP WITH TIME ZONE '2026-10-20T03:00:00Z', TIMESTAMP WITH TIME ZONE '2027-10-20T03:00:00Z', 1);
 
 INSERT INTO tb_notification (text, moment, read, route, user_id) VALUES ('Você recebeu uma nova tarefa', '2024-01-15T10:30:00Z', false, '/tasks/1', 1);
+
+INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id) VALUES ('Trilha HTML', 'Trilha principal do curso', 1, 'https://upload.wikimedia.org/wikipedia/commons/e/e7/Logo_Course_Croisi%C3%A8re_EDHEC_noir.png', 1, 1);
+INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id) VALUES ('Forum', 'Tire suas dúvidas', 2, 'https://upload.wikimedia.org/wikipedia/commons/e/e7/Logo_Course_Croisi%C3%A8re_EDHEC_noir.png', 2, 1);
+INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id) VALUES ('Lives', 'Lives expclusivas oara a turma', 3, 'https://upload.wikimedia.org/wikipedia/commons/e/e7/Logo_Course_Croisi%C3%A8re_EDHEC_noir.png', 0, 1);
