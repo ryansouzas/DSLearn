@@ -24,6 +24,9 @@ public class User {
     )
     private Set<Role> roles;
 
+    @OneToMany(mappedBy = "user")
+    private Set<Notification> notifications;
+
     public User(){
 
     }
