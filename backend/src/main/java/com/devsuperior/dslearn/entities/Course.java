@@ -2,6 +2,8 @@ package com.devsuperior.dslearn.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -15,6 +17,9 @@ public class Course {
     private String name;
     private String imgUri;
     private String imgGrayUri;
+
+    @OneToMany(mappedBy = "course")
+    private List<Offer> offers = new ArrayList<>();
 
     public Course(){
 
@@ -57,6 +62,10 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Offer> getOffers() {
+        return offers;
     }
 
     @Override
