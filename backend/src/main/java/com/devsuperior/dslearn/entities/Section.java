@@ -1,15 +1,12 @@
 package com.devsuperior.dslearn.entities;
 
-import com.devsuperior.dslearn.entities.enums.ResourceType;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tb_resource")
-public class Resource {
+@Table(name = "tb_section")
+public class Section {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,27 +15,27 @@ public class Resource {
     private String description;
     private Integer position;
     private String imgUri;
-    private ResourceType type;
 
     @ManyToOne
-    @JoinColumn(name = "offer_id")
-    private Offer offer;
+    @JoinColumn(name = "resource_id")
+    private Resource resource;
 
-    @OneToMany(mappedBy = "resource")
-    private List<Section> sections = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "prerequisite_id")
+    private Section preRequisite;
 
-    public Resource(){
+    public Section(){
 
     }
 
-    public Resource(Long id, String title, String description, Integer position, String imgUri, ResourceType type, Offer offer) {
+    public Section(Long id, String title, String description, Integer position, String imgUri, Resource resource, Section preRequisite) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.position = position;
         this.imgUri = imgUri;
-        this.type = type;
-        this.offer = offer;
+        this.resource = resource;
+        this.preRequisite = preRequisite;
     }
 
     public String getDescription() {
@@ -65,20 +62,28 @@ public class Resource {
         this.imgUri = imgUri;
     }
 
-    public Offer getOffer() {
-        return offer;
-    }
-
-    public void setOffer(Offer offer) {
-        this.offer = offer;
-    }
-
     public Integer getPosition() {
         return position;
     }
 
     public void setPosition(Integer position) {
         this.position = position;
+    }
+
+    public Section getPreRequisite() {
+        return preRequisite;
+    }
+
+    public void setPreRequisite(Section preRequisite) {
+        this.preRequisite = preRequisite;
+    }
+
+    public Resource getResource() {
+        return resource;
+    }
+
+    public void setResource(Resource resource) {
+        this.resource = resource;
     }
 
     public String getTitle() {
@@ -89,23 +94,11 @@ public class Resource {
         this.title = title;
     }
 
-    public ResourceType getType() {
-        return type;
-    }
-
-    public void setType(ResourceType type) {
-        this.type = type;
-    }
-
-    public List<Section> getSections() {
-        return sections;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Resource resource = (Resource) o;
-        return Objects.equals(id, resource.id);
+        Section section = (Section) o;
+        return Objects.equals(id, section.id);
     }
 
     @Override
